@@ -2,15 +2,41 @@
 <info xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
     <id>gefex_provisioning</id>
     <name>Gefex Provisioning</name>
-    <summary>Webhook Receiver</summary>
-    <description>
-        Provides a secure endpoint for automated quota provisioning based on external events. Implements write-only storage for secrets and HMAC-SHA256 validation.
+    
+    <summary lang="en">Secure Webhook receiver for automated storage quota provisioning</summary>
+    <summary lang="es">Receptor Webhook seguro para el aprovisionamiento automático de cuotas</summary>
+    
+    <description lang="en">
+Gefex Provisioning is a security and administration application that automates user storage quota management through a secure Webhook. It serves as a shielded bridge between external billing, CRM, or management systems and the Nextcloud core.
+
+**Key Features:**
+* **Zero-Trust Security:** Validates all incoming requests using HMAC-SHA256 signatures to ensure only authorized external systems can modify quotas.
+* **Dynamic Quota Allocation:** Processes `entitlement.granted` events to assign specific storage limits, and `entitlement.revoked` to automatically downgrade users to a default tier.
+* **Write-Only Secret Vault:** Webhook secrets are securely stored and managed via the admin settings, never exposing them in the user interface to prevent credential leaks.
+* **Payload Protection:** Mitigates DoS attacks by enforcing a strict 10 KB payload limit on incoming requests.
     </description>
+
+    <description lang="es">
+Gefex Provisioning es una aplicación de seguridad y administración que automatiza la gestión de cuotas de almacenamiento de los usuarios a través de un Webhook seguro. Actúa como un puente blindado entre sistemas externos (como facturación o CRMs) y el núcleo de Nextcloud.
+
+**Características principales:**
+* **Seguridad Zero-Trust:** Valida todas las peticiones entrantes mediante firmas HMAC-SHA256, garantizando que solo los sistemas autorizados puedan modificar las cuotas.
+* **Asignación Dinámica:** Procesa eventos `entitlement.granted` para asignar límites de almacenamiento específicos, y `entitlement.revoked` para restablecer a los usuarios a una cuota predeterminada.
+* **Bóveda de Secreto Write-Only:** El secreto del Webhook se configura desde el panel de administrador y se almacena de forma blindada, sin mostrarse nunca en la interfaz gráfica.
+* **Protección de Carga:** Previene ataques DoS aplicando un límite estricto de 10 KB en el tamaño de las peticiones recibidas.
+    </description>
+
     <version>1.0.0</version>
-    <licence>agpl</licence>
+    
+    <licence>AGPL-3.0-only</licence>
+    
     <author>Gefex Team</author>
     <namespace>GefexProvisioning</namespace>
     <category>security</category>
+    
+    <website>https://github.com/PEDRO00100/nextcloud-gefex-provisioning</website>
+    <bugs>https://github.com/PEDRO00100/nextcloud-gefex-provisioning/issues</bugs>
+    <repository type="git">https://github.com/PEDRO00100/nextcloud-gefex-provisioning.git</repository>
     
     <dependencies>
         <nextcloud min-version="32" max-version="33" />
